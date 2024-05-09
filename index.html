@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Kevin's Trial</title>
+  <title>Kevin's Trial</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts.js"></script>
 </head>
 <body>
-
-<h1>Movie Club of Doom Catch 'em All Speedrun!</h1>
-<p>Guess every movie before you run out of time. You will be granted more time for guessing movies correctly.</p>
-
-<form action="/action_page.php">
-    <label for="fname">Movie Guess!:</label><br>
-    <input type="text" id="fname" value="The Room"><br><br>
-    <input type="submit" value="Guess">
-  </form>
+<div class="app">
+  <h1>Movie Club of Doom Catch 'em All Speedrun!</h1>
+  <br>
+  <div class="quiz">
+    <label id="guess-prompt" for="guessbox">Guess a movie!</label>
+    <br>
+    <div>
+      <p id="score">Score: --</p>
+      <p id="timer">Time: --</p>
+    </div>
+    <br>
+    <div>
+      <input type="text" id="guessbox" placeholder="The Room" name="guessbox"><br><br>
+      <button id="submit-guess">Submit Guess</button>
+      <button onclick="runGame()">Let's go</button>
+    </div>
+  </div>
+</div>
 
 <img src="https://www.nyan.cat/cats/original.gif"></img>
 
