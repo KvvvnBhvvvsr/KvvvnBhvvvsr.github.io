@@ -5,6 +5,7 @@ let score = 0;
 let movieCount = 0;
 var max_movie_count = 4;
 var guess_list = "";
+var guess_set = new Set();
 
 // document.getElementById("score").innerHTML = 0;
 // Map: movie : (number, review page, poster)
@@ -158,6 +159,7 @@ function runGame() {
     console.log("Game Started!");
     score = 0;
     movieCount = 0;
+    guess_set.clear();
     runTimer();
     guess_list = "";
     const guessbox = document.getElementById('guessbox');
@@ -244,6 +246,7 @@ function movieNamed(guess) {
         document.getElementById("score").innerHTML = "Score: " + score;
         timeLeft += 6;
         movieCount++;
+        guess_set.add(guess);
         guess_list += "\n" + guess + ", ";
         document.getElementById("list").innerHTML = "Movies Named: " + movieCount + "/124 \n" + guess_list;
         console.log(guess_list);
@@ -254,7 +257,7 @@ function movieNamed(guess) {
 function checkTitle(title) {
     console.log("checking movie...");
     // return movie_names.has(title.toLowerCase());
-    return movie_set.has(title.toLowerCase());
+    return movie_set.has(title.toLowerCase()) && !guess_set.has(title.toLowerCase());
 
     // Consider implementing fuzzy string matching
 }
