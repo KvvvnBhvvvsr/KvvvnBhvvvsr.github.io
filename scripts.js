@@ -24,18 +24,23 @@ for (let i = 0; i < max_movie_count; i++) {
 
 function runGame() {
     console.log("Game Started!");
+    gameRunning = true;
     score = 0;
     runTimer();
     const guessbox = document.getElementById('guessbox');
     guessbox.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
-        console.log('Enter key pressed: ' + guessbox.value);
-        movieNamed(guessbox.value);
+        if (gameRunning) {
+            console.log('Enter key pressed: ' + guessbox.value);
+            movieNamed(guessbox.value);
+        }
       }
     });
     const submit = document.getElementById('submit-guess');
     submit.addEventListener('click', function() {
-        movieNamed(guessbox.value);
+        if (gameRunning) {
+            movieNamed(guessbox.value);
+        }
     });
 }
 
